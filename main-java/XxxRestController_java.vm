@@ -39,7 +39,7 @@ import ${ROOT_PKG}.rest.services.${serviceClass};
 ##-------------------------------------------------
 ## the collection name can be set with entity tag "CollectionName" (default value is entity name in lower case)
 #set( $collectionName = $entity.tagValue("CollectionName", $fn.toLowerCase($entity.name) ) )
-#set( $uriPath = "${REST_API_ROOT}/${collectionName}" )
+#set( $uriPath = "${DOLLAR}{rest.api-root}/${collectionName}" )
 #set( $dtoInstance = "$fn.uncapitalize($entity.name)DTO" )
 #set( $ID_ARGS = $fn.argumentsList($entity.keyAttributes) )
 ## REST key attributes 

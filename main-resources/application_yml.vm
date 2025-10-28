@@ -1,5 +1,10 @@
-# server:
-#   port: 8080
+#using( "ROOT_PKG" ) 
+#using( "DB_JDBC_DRIVER_CLASS", "DB_JDBC_URL", "DB_USER", "DB_PASSWORD", "DB_JPA_DIALECT" ) 
+## Force variable definition (to avoid default value)
+#using( "REST_SERVER_PORT", "REST_API_ROOT" ) 
+#--- server config
+server:
+  port: $fn.get('REST_SERVER_PORT','8080')
 
 #--- spring config
 spring:
@@ -30,8 +35,11 @@ spring:
 #--- logging config
 logging:
   level:
-#      root: INFO
     ${ROOT_PKG}: DEBUG
 #      ${ROOT_PKG}.persistence: DEBUG
 #      ${ROOT_PKG}.rest.controllers: DEBUG
 #      ${ROOT_PKG}.rest.services: DEBUG
+
+#--- application config
+rest:
+  api-root: $fn.get('REST_API_ROOT','/api/v1')
